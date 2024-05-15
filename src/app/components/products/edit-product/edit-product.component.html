@@ -1,0 +1,110 @@
+<div class="container my-5 fw-bold">
+  <h1 class="my-4 text-muted text-center">
+    {{ id == 0 ? "Add Product" : "Edit Product" }}
+  </h1>
+  <form [formGroup]="productForm" *ngIf="productForm" (ngSubmit)="productHandler()" class="row g-3">
+    <div class="col-md-6">
+      <label for="name" class="form-label">Name</label>
+      <input id="name" type="text" formControlName="name" class="form-control">
+      <div
+        *ngIf="productForm.controls['name'].invalid && (productForm.controls['name'].dirty || productForm.controls['name'].touched)"
+        class="text-danger">
+        <div *ngIf="productForm.controls['name'].errors?.['required']">
+          Name is required.
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label for="price" class="form-label">Price</label>
+      <input id="price" type="number" formControlName="price" class="form-control" required>
+      <div
+        *ngIf="productForm.controls['price'].invalid && (productForm.controls['price'].dirty || productForm.controls['price'].touched)"
+        class="text-danger">
+        <div *ngIf="productForm.controls['price'].errors?.['required']">
+          Price is required.
+        </div>
+        <div *ngIf="productForm.controls['price'].errors?.['min']">
+          Price must be greater than 0.
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label for="category" class="form-label">Category</label>
+      <select id="category" formControlName="categoryId" class="form-control">
+        <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+      </select>
+      <div
+        *ngIf="productForm.controls['categoryId'].invalid && (productForm.controls['categoryId'].dirty || productForm.controls['categoryId'].touched)"
+        class="text-danger">
+        <div *ngIf="productForm.controls['categoryId'].errors?.['required']">
+          Category is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label for="description" class="form-label">Description</label>
+      <input id="description" type="text" formControlName="description" class="form-control">
+      <div
+        *ngIf="productForm.controls['description'].invalid && (productForm.controls['description'].dirty || productForm.controls['description'].touched)"
+        class="text-danger">
+        <div *ngIf="productForm.controls['description'].errors?.['required']">
+          Description is required.
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label for="brand" class="form-label">Brand</label>
+      <input id="brand" type="text" formControlName="brand" class="form-control">
+      <div
+        *ngIf="productForm.controls['brand'].invalid && (productForm.controls['brand'].dirty || productForm.controls['brand'].touched)"
+        class="text-danger">
+        <div *ngIf="productForm.controls['brand'].errors?.['required']">
+          Brand is required.
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label for="stock" class="form-label">Stock</label>
+      <input id="stock" type="number" formControlName="stock" class="form-control">
+      <div
+        *ngIf="productForm.controls['stock'].invalid && (productForm.controls['stock'].dirty || productForm.controls['stock'].touched)"
+        class="text-danger">
+        <div *ngIf="productForm.controls['stock'].errors?.['required']">
+          Stock is required.
+        </div>
+        <div *ngIf="productForm.controls['stock'].errors?.['min']">
+          Stock must be greater than 0.
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label for="modelYear" class="form-label">Model Year</label>
+      <input id="modelYear" type="number" formControlName="modelYear" class="form-control">
+      <div
+        *ngIf="productForm.controls['modelYear'].invalid && (productForm.controls['modelYear'].dirty || productForm.controls['modelYear'].touched)"
+        class="text-danger">
+        <div *ngIf="productForm.controls['modelYear'].errors?.['required']">
+          Model Year is required.
+        </div>
+        <div *ngIf="productForm.controls['modelYear'].errors?.['min']">
+          Model Year must be greater than 0.
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label for="imageUrl" class="form-label">Image</label>
+      <input id="image" type="file" (change)="onFileSelected($event)" accept="image/*" class="form-control">
+      <div
+        *ngIf="productForm.controls['imageUrl'].invalid && (productForm.controls['imageUrl'].dirty || productForm.controls['imageUrl'].touched)"
+        class="text-danger">
+        <div *ngIf="productForm.controls['imageUrl'].errors?.['required']">
+          Image URL is required.
+        </div>
+      </div>
+    </div>
+    <div class="col-12 mt-4">
+      <button type="submit" class="btn submit-btn" [disabled]="productForm.invalid">Submit</button>
+    </div>
+  </form>
+</div>

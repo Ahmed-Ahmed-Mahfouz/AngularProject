@@ -1,0 +1,25 @@
+.display-5 {
+  font-size: 3rem;
+  color: #5a6268;
+}
+
+.small {
+  font-size: 1.2rem;
+  color: #6c757d;
+  font-weight: bold;
+}
+
+.fs-5 {
+  font-size: 2rem;
+  color: #ffaa6d;
+}
+
+.lead {
+  font-size: 1.5rem;
+  line-height: 1.5;
+}
+
+.btn-outline-dark:hover {
+  background-color: #fec195;
+  color: #222
+}
