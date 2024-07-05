@@ -35,7 +35,7 @@
       </ul>
 
       <div class="d-flex align-items-center justify-content-center">
-        <span *ngIf="authService.isLoggedIn()" class="text text-light me-5">Welcome, {{ authService.userName }}</span>
+        <span *ngIf="authService.isLoggedIn()" class="text text-light me-5">Welcome, {{ formattedUserName }}</span>
         <a *ngIf="!authService.isLoggedIn()" class="btn" role="button" [routerLink]="['/login']"
           routerLinkActive="active-btn">
           <button class="bt">

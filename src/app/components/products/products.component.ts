@@ -12,28 +12,31 @@ import { takeUntil } from 'rxjs/operators';
   standalone: true,
   imports: [CommonModule, RouterLink],
   templateUrl: './products.component.html',
-  styleUrl: './products.component.css',
+  styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent implements OnInit, OnDestroy {
   private unsubscribe$ = new Subject<void>();
   products: Iproduct[] = [];
   currentPage = 1;
-  itemsPerPage = 4;
+  itemsPerPage = 3;
   totalPages = 1;
   pagesToShow = 5;
   pages: number[] = [];
   activePage: number = this.currentPage;
   categories: any[] = [];
   activeCategoryId: number | null = null;
+  isEmptyCategory: boolean = false; // Flag to check if category is empty
 
   constructor(
     private productService: ProductService,
     private categoryService: CategoryService
   ) {}
+
   ngOnInit(): void {
     this.getProducts();
     this.getCategories();
   }
+
   getProducts(): void {
     this.productService
       .getProducts(this.currentPage, this.itemsPerPage)
@@ -106,6 +109,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
         const totalCount = data.totalCount;
         this.totalPages = Math.ceil(totalCount / this.itemsPerPage);
         this.updatePageList(totalCount);
+        this.isEmptyCategory = this.products.length === 0; // Update flag based on products length
       });
   }
 
@@ -117,6 +121,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
         this.products = data.items;
         this.totalPages = Math.ceil(data.totalCount / this.itemsPerPage);
         this.updatePageList(data.totalCount);
+        this.isEmptyCategory = this.products.length === 0; // Update flag based on products length
       });
   }
 

@@ -210,3 +210,135 @@ i {
   color: #222;
   border: none;
 }
+
+.eye-icon {
+  font-weight: bold;
+  font-size: 20px;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.eye-icon:hover {
+  color: #2d8cf0
+}
+
+.image {
+  width: 50px;
+  object-fit: contain;
+}
+
+.contain {
+  padding: 0 15px;
+  /* Add padding to the sides for better spacing */
+}
+
+.table {
+  width: 100%;
+  /* Ensure the table takes full width of its container */
+}
+
+@media (max-width: 768px) {
+
+  .container {
+    padding: 0;
+  }
+
+  .table {
+    font-size: 14px;
+  }
+
+  .th,
+  td {
+    padding: 0.5rem;
+  }
+
+  .eye-icon {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .table {
+    font-size: 12px;
+  }
+
+  .th,
+  td {
+    padding: 0.25rem;
+  }
+
+  .eye-icon {
+    font-size: 14px;
+  }
+
+  .image {
+    width: 40px;
+  }
+
+  .contain {
+    padding: 0 10px;
+  }
+
+  .delete-button {
+    width: 25px;
+    height: 25px;
+  }
+
+  .delete-svgIcon {
+    width: 12px;
+  }
+
+  .delete-button:hover {
+    width: 70px;
+  }
+
+  .delete-button:hover .delete-svgIcon {
+    width: 20px;
+  }
+
+  .edit-button {
+    width: 25px;
+    height: 25px;
+  }
+
+  .edit-svgIcon {
+    width: 12px;
+  }
+
+  .edit-button:hover {
+    width: 70px;
+  }
+
+  .edit-button:hover .edit-svgIcon {
+    width: 20px;
+  }
+
+  .edit-button::before {
+    font-size: 13px;
+  }
+
+  .delete-button::before {
+    font-size: 13px;
+  }
+
+  .edit-button::after {
+    font-size: 13px;
+  }
+
+  .delete-button::after {
+    font-size: 13px;
+  }
+
+  .button {
+    width: 120px;
+  }
+
+  .button .button__icon {
+    width: 100px;
+  }
+
+  .button .button__text {
+    font-size: 14px;
+  }
+}

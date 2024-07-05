@@ -1,5 +1,5 @@
 <div class="contain" style="height: 66vh;">
-  <div class="container d-flex justify-content-end mt-3">
+  <div class="container-fluid d-flex justify-content-end mt-3">
     <button type="button" class="button" [routerLink]="['/products/0/edit']">
       <span class="button__text text-light">Add Item</span>
       <span class="button__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2"
@@ -14,21 +14,28 @@
     <thead>
       <tr>
         <th scope="col" class="th">#</th>
-        <th scope="col" class="th">Details</th>
+
         <th scope="col" class="th">Name</th>
         <th scope="col" class="th">Price</th>
-        <th scope="col" class="th">quantity</th>
+        <th scope="col" class="th">Quantity</th>
+        <th scope="col" class="th">Type</th>
+        <th scope="col" class="th">Model</th>
+        <th scope="col" class="th">Image</th>
+        <th scope="col" class="th">More Details</th>
         <th scope="col" colspan="3" class="th">Actions</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let product of products; let i = index" class="fw-bold">
         <th scope="row">{{ i + 1}}</th>
-        <td><i class="bi bi-eye" [routerLink]="['/products', product.id]"></i></td>
+
         <td>{{product.name}}</td>
         <td>${{ product.price | number:'1.2-2' }}</td>
         <td>{{product.stock}}</td>
-
+        <td>{{product.categoryName}}</td>
+        <td>{{product.modelYear}}</td>
+        <td><img class="image" src={{product.imageUrl}} alt="image"></td>
+        <td><i class="bi bi-eye-fill eye-icon" [routerLink]="['/products', product.id]"></i></td>
         <td style="width:1px;">
           <button class="edit-button" [routerLink]="['/products', product.id, 'edit']">
             <svg class="edit-svgIcon" viewBox="0 0 512 512">

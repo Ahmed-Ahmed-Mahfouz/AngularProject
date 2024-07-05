@@ -34,4 +34,8 @@ export class NavbarComponent {
       }
     });
   }
+
+  get formattedUserName(): string {
+    return this.authService.userName.replace(/_/g, ' ');
+  }
 }
